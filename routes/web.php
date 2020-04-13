@@ -43,6 +43,7 @@ Route::group(['middleware'=>'auth'],function(){
     ]);
 
     Route::resource('data_marker','Monitoring\DataMarkerController');
+    Route::resource('gis','GisController');
 
     Route::get('/list_data_marker', [
         'as' => 'listdata',
@@ -61,7 +62,7 @@ Route::group(['middleware'=>'auth'],function(){
 
 
     Route::post('/maps_pati', [
-        'as' => 'view.carto',
+        'as' => 'carto',
         'uses'=>'Monitoring\DataMarkerController@indexCarto'
     ]);
 
@@ -77,5 +78,5 @@ Route::group(['middleware'=>'auth'],function(){
     ]);
 
 
-
+    
 });

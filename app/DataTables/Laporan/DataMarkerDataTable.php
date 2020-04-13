@@ -33,7 +33,7 @@ class DataMarkerDataTable extends DataTable
         })
 
         ->addColumn('edit', function($request){
-            if(Auth::user()->role_id == 1 && $request->flag != 0 || Auth::user()->role_id == 2 && $request->user_id == Auth::user()->id ){
+            if(Auth::user()->role_id == 1  || Auth::user()->role_id == 2 && $request->user_id == Auth::user()->id && $request->flag == 0 ){
             return view ('datatable._edit',[
                 'model'    => $request,
                 'edit_url' => route('listdata.edit2', [$request->id])
@@ -44,12 +44,16 @@ class DataMarkerDataTable extends DataTable
         })
 
 
-        ->addColumn('delete', function($request){    
+        ->addColumn('delete', function($request){
+            if(Auth::user()->role_id == 1  || Auth::user()->role_id == 2 && $request->user_id == Auth::user()->id && $request->flag == 0 ){    
             return view ('datatable._delete',[
                 'model'    => $request,
                 'delete_url' => route('data_marker.destroy', $request->id),
-                'confirm_message' => 'Yakin ingin menghapus Data  ?'
-            ]);                 
+                'confirm_message' => 'Yakin Ingin Menghapus Data Ini  ?'
+            ]);
+            }else{
+                return NULL;
+            }                     
         })
 
 
@@ -76,7 +80,7 @@ class DataMarkerDataTable extends DataTable
 
         
 
-        ->rawColumns(['approve']);
+        ->rawColumns(['approve', 'edit', 'delete']);
     }
 
     /**
@@ -134,8 +138,8 @@ class DataMarkerDataTable extends DataTable
             (['data'=> 'latitude' ,'name' => 'latitude' , 'title' => 'Latitude','visible' => true]),
             (['data'=> 'longitude' ,'name' => 'longitude' , 'title' => 'Longitude','Longitude' => true]),
             (['data'=> 'flag' ,'name' => 'flag' , 'title' => 'Status','orderable' => false]),
-            (['data'=> 'edit' ,'name' => 'edit' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
             (['data'=> 'delete' ,'name' => 'delete' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
+            (['data'=> 'edit' ,'name' => 'edit' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
             (['data'=> 'approve' ,'name' => 'approve' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
         ];
         }else{
@@ -143,6 +147,9 @@ class DataMarkerDataTable extends DataTable
             (['data'=> 'nama' ,'name' => 'nama' , 'title' => 'Nama Lokasi','visible' => true]),
             (['data'=> 'latitude' ,'name' => 'latitude' , 'title' => 'Latitude','visible' => true]),
             (['data'=> 'longitude' ,'name' => 'longitude' , 'title' => 'Longitude','Longitude' => true]),
+            (['data'=> 'delete' ,'name' => 'delete' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
+            (['data'=> 'edit' ,'name' => 'edit' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
+           // (['data'=> 'approve' ,'name' => 'approve' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
             ];
         }
     }

@@ -61,8 +61,6 @@ class UserController extends Controller
             'email' => 'required',
             'nama' => 'required',
             'password' => 'required',
-           // 'obj_audit_id' => 'required',
-           // 'bag_unit_id' => 'required',
             'role_id' => 'required'
         ]);
         

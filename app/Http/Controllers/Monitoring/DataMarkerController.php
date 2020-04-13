@@ -180,7 +180,7 @@ class DataMarkerController extends Controller
                 "message" => "Berhasil Menghapus "
         ]);
 
-        return redirect()->route("data_marker.index");
+        return redirect()->route("listdata");
     }
 
     public function getdropdown(Request $request){
@@ -202,9 +202,9 @@ class DataMarkerController extends Controller
      */
     public function edit2($id)
     {
-        $data = mGis::find($id);
+        $data2 = mGis::find($id);
         
-        return view('data_marker._untukedit')->with(compact('data'));
+        return view('data_marker._untukedit')->with(compact('data2'));
     }
 
 

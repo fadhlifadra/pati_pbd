@@ -51,7 +51,7 @@ map.addLayer(marker);
 
 
 <div class="body">
-    {!! Form::open(['url' => route('listdata.update2',$data->id),
+    {!! Form::open(['url' => route('listdata.update2',$data2->id),
         'method' => 'post','files' => 'true' ]) !!}
         <div class="form-grup">
             <label for="">Latitude : </label>

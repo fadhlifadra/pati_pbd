@@ -58,6 +58,12 @@
                         <span>Home | Map View</span>
                     </a>
                 </li>
+                <li {!! ($group == 'hom') ? "class='active'" : "" !!}>
+                    <a href="{{ route('gis.index') }}">
+                        <i class="material-icons">home</i>
+                        <span>Pati's Map View</span>
+                    </a>
+                </li>
 
                 @if(Auth::user()->role_id != 2)
                 <li {!! ($group == 'master') ? "class='active'" : "" !!}>
@@ -85,13 +91,11 @@
                         <li {!! ($page == 'listdata') ? "class='active'" : "" !!}>
                             <a href="{{ route('listdata') }}">List Marker</a>
                         </li>
-                            <li {!! ($page == 'laporan_export') ? "class='active'" : "" !!}>
-                                <a href="{{ route('view.carto') }}">Map Pati</a>
-                            </li>
                     </ul>
                 </li>                
-            </ul>
+            </ul>   
         </div>
+        
         <!-- #Menu -->
         <!-- Footer -->
         <div class="legal">
