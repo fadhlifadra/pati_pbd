@@ -11,7 +11,7 @@ class mGis extends Model
     protected $fillable = [
         'nama','longitude','latitude', 'flag',
         //foreign
-        'user_id'
+        'user_id', 'file', 'keterangan'
         
     ];
 

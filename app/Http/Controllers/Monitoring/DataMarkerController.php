@@ -20,8 +20,10 @@ class DataMarkerController extends Controller
      */
     public function index()
     {
+        $data = mGis::get();
+        
 
-        return view('data_marker.index');
+        return view('data_marker.index')->with(compact('data'));
     }
 
     public function indexDataMarker(DataMarkerDataTable $dataTable)
@@ -75,15 +77,30 @@ class DataMarkerController extends Controller
             'nama' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
+            'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+			'keterangan' => 'required',
 
         ]);
+        
+        // menyimpan data file yang diupload ke variabel $file
+		$file = $request->file('file');
+ 
+		$nama_file = time()."_".$file->getClientOriginalName();
+ 
+      	        // isi dengan nama folder tempat kemana file diupload
+		$tujuan_upload = 'data_file';
+		$file->move($tujuan_upload,$nama_file);
+
+
         if(Auth::user()->role_id == 1 ){
         $t_laporan = mGis::create([
             'user_id' => Auth::user()->id,
             'nama' => $request->nama,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
-            'flag' => 1
+            'flag' => 1,
+            'file' => $nama_file,
+			'keterangan' => $request->keterangan,
 
         ]);}
 
@@ -93,7 +110,9 @@ class DataMarkerController extends Controller
                 'nama' => $request->nama,
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude,
-                'flag' => 0
+                'flag' => 0,
+                'file' => $nama_file,
+			    'keterangan' => $request->keterangan,
     
             ]);}
         
@@ -242,6 +261,9 @@ class DataMarkerController extends Controller
 
         return view('carto');
     }
+
+
+    
 
 }
         

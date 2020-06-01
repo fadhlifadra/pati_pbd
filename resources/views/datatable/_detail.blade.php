@@ -1,3 +1,3 @@
 {!! Form::model($model, ['url' => $detail_url, 'method' => 'get'] ) !!}
-{!! Form::button('<i class="material-icons">assessment</i><span>Detail</span>', array('type' => 'submit', 'class' => 'btn bg-teal waves-effect')) !!}
+{!! Form::button('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DetailModal">Detail', array('type' => 'submit', 'class' => 'btn bg-teal waves-effect')) !!}
 {!! Form::close() !!}

@@ -54,26 +54,39 @@ map.addLayer(marker);
 </script>
 
 
-
+<br>
 <div class="body">
     {!! Form::open(['url' => route('data_marker.store'),
         'method' => 'post','files' => 'true' ]) !!}
-        <div class="form-grup">
+    <div class="collumn">
+        <div class="row-sm-6">
             <label for="">Latitude : </label>
             <input type="text" class="form-control" name="latitude" id="Latitude">
         </div>
-        <div class="form-grup">
+        <div class="row-sm-6">
             <label for="">Longitude : </label>
             <input type="text" class="form-control" name="longitude" id="Longitude">
         </div>
-        <div class="form-grup">
+        <div class="row-sm-6">
             <label for="">Nama : </label>
-            <input type="text" class="form-control" name="nama" id="Nama">
+            <input type="text" class="form-control" name="nama" id="Nama"><br>
         </div>
+        <div class="row-sm-6">
+            <b>File Gambar</b><br/>
+            <input type="file" name="file"><br>
+        </div>
+    </div>
+    <div class="collumn">
+        <div class="row-sm-6">
+            <b>Keterangan</b>
+            <textarea class="form-control" maxlength="255" name="keterangan"></textarea>
+        </div>
+        
         <br>
         <div style="float: right;">
             {!! Form::submit ('Simpan',['class'=>'btn btn-primary btn-lg waves-effect']) !!}
         </div>
+    </div>
     {!! Form::close() !!}
 </div>
 

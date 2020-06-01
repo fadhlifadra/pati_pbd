@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-2">
         <div class="form-group form-float{{ $errors->has('status') ? 'has-error': '' }} ">
-            {!! Form::label('status', 'Tindak Lanjut', ['class'=>'form-label']) !!}
+            {!! Form::label('status', 'Verifikasi', ['class'=>'form-label']) !!}
                 {!! Form::select('status', ['1' => 'Approve', '3' => 'Deny'], null,[ 'class' => 'js-selectize', 'placeholder' => 'Pilih Status' ]) !!}
             {!! $errors->first('status', '<p class="error">:message</p>') !!}
         </div>

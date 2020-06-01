@@ -8,13 +8,9 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        Beranda Data User
+                        Beranda Data Armada
                     </h2>
-                    <ol class="breadcrumb">
-                        <li class="active">
-                            <i class="material-icons">person</i> Beranda Data User
-                        </li>
-                    </ol>
+
                 </div>
                 <div class="body">
                     <div class="row clearfix">

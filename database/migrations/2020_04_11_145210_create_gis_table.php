@@ -16,10 +16,13 @@ class CreateGisTable extends Migration
         Schema::create('gis', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama')->unique();
-            $table->string('longitude')->nullable();
+            $table->string('longitude');
             $table->string('latitude');
+            $table->string('file')->nullable();
+            $table->string('keterangan')->nullable();
             $table->boolean('flag');
             $table->integer('user_id')->unsigned();
+
 
             $table->timestamps();
 

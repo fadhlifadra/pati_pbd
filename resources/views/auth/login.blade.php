@@ -31,16 +31,14 @@
     <div class="filter"></div>
         <div class="login-box" style="z-index: 2;">
             <div class="logo">
-                <a href="{{ url('/') }}"><b>   SI Geografi Kabupaten Pati   </b></a>
+                <a href="{{ url('/') }}"><b>   Sistem Informasi Agen Travel   </b></a>
             </div>
             <div class="card">
                 <div class="body">
                     {!! Form::open(['url' => route('login'),
                         'method' => 'post' , 'id' => 'sign_in']) !!}
                     {{-- <form id="sign_in" method="POST"> --}}
-                        <center>
-                        <img src="https://upload.wikimedia.org/wikipedia/id/thumb/7/70/Logo_Kabupaten_Pati.png/150px-Logo_Kabupaten_Pati.png" width="100px">
-                        </center>
+
                         <div class="input-group">
                             <span class="input-group-addon">
                                 <i class="material-icons">account_box</i>

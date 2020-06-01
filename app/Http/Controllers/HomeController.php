@@ -52,5 +52,14 @@ class HomeController extends Controller
         
     }
 
+    public function json3()
+    {
+
+        $path = storage_path() . "/map (1).geojson";
+        $json = json_decode(file_get_contents($path), true); 
+        echo json_encode($json);
+        
+    }
+
 
 }

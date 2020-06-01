@@ -8,7 +8,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    <h2>Tindak Lanjut</h2>
+                    <h2>Verifikasi</h2>
                 </div>
                 <div class="body">
                     {!! Form::model($data, ['url' => route('data_marker.update',$data->id),

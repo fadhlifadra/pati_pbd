@@ -77,6 +77,13 @@ Route::group(['middleware'=>'auth'],function(){
         'uses'=>'HomeController@json2'
     ]);
 
+    Route::get('/home/json3', [
+        'as' => 'home.json3',
+        'uses'=>'HomeController@json3'
+    ]);
 
-    
+
+    Route::get('/upload', 'GisController@upload');
+    Route::post('/upload/proses', 'GisController@proses_upload');   
+
 });

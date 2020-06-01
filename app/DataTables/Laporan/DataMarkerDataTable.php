@@ -56,6 +56,20 @@ class DataMarkerDataTable extends DataTable
             }                     
         })
 
+        ->addColumn('image', function ($request) { $url=asset("/data_file/$request->file"); 
+            return '<img src='.$url.' border="0" width="150" class="img-rounded" align="center" />'; })
+
+           // ->addColumn('detail', function ($data) {
+              //  return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DetailModal">Detail'; })
+
+              ->addColumn('detail', function($request){
+                    return view ('datatable._detail',[
+                        'model'    => $request,
+                        'detail_url' => route('home.json3', [$request->id]),
+                    ]);      
+            })
+
+
 
         ->editColumn('flag', function($request){
             if(Auth::user()->role_id == 1){
@@ -80,7 +94,7 @@ class DataMarkerDataTable extends DataTable
 
         
 
-        ->rawColumns(['approve', 'edit', 'delete']);
+        ->rawColumns(['approve', 'edit', 'delete', 'image', 'detail']);
     }
 
     /**
@@ -130,13 +144,16 @@ class DataMarkerDataTable extends DataTable
      */
     protected function getColumns()
     {
-        if(Auth::user()->role_id = 1){
+        if(Auth::user()->role_id == 1){
         return [
             (['data'=> 'user.email' ,'name' => 'user.email' , 'title' => 'Pengirim','orderable' => false]),
             (['data'=> 'id' ,'name' => 'id' , 'title' => 'ID','visible' => false]),
             (['data'=> 'nama' ,'name' => 'nama' , 'title' => 'Nama Lokasi','visible' => true]),
             (['data'=> 'latitude' ,'name' => 'latitude' , 'title' => 'Latitude','visible' => true]),
-            (['data'=> 'longitude' ,'name' => 'longitude' , 'title' => 'Longitude','Longitude' => true]),
+            (['data'=> 'longitude' ,'name' => 'longitude' , 'title' => 'Longitude','visible' => true]),
+            (['data'=> 'keterangan' ,'name' => 'keterangan' , 'title' => 'Deskripsi','visible' => true]),
+            (['data'=> 'image' ,'name' => 'image' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
+            //(['data'=> 'detail' ,'name' => 'detail' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
             (['data'=> 'flag' ,'name' => 'flag' , 'title' => 'Status','orderable' => false]),
             (['data'=> 'delete' ,'name' => 'delete' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
             (['data'=> 'edit' ,'name' => 'edit' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
@@ -147,6 +164,9 @@ class DataMarkerDataTable extends DataTable
             (['data'=> 'nama' ,'name' => 'nama' , 'title' => 'Nama Lokasi','visible' => true]),
             (['data'=> 'latitude' ,'name' => 'latitude' , 'title' => 'Latitude','visible' => true]),
             (['data'=> 'longitude' ,'name' => 'longitude' , 'title' => 'Longitude','Longitude' => true]),
+            (['data'=> 'keterangan' ,'name' => 'keterangan' , 'title' => 'Deskripsi','visible' => true]),
+            (['data'=> 'image' ,'name' => 'image' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
+            //(['data'=> 'detail' ,'name' => 'detail' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
             (['data'=> 'delete' ,'name' => 'delete' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
             (['data'=> 'edit' ,'name' => 'edit' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
            // (['data'=> 'approve' ,'name' => 'approve' , 'title' => '' ,'orderable' => false,'searchable' => false, 'exportable' => false, 'printable'  => false, 'width' => '25px']),
